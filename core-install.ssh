@@ -1,0 +1,97 @@
+#!/bin/bash
+echo " ██████  ██████  ██████  ███████      ██ ███    ██ ███████ ████████  █████  ██      ██      ███████ ██████      ███████  ██████ ██████  ██ ██████  ████████   "
+echo " ██      ██    ██ ██   ██ ██          ██ ████   ██ ██         ██    ██   ██ ██      ██      ██      ██   ██     ██      ██      ██   ██ ██ ██   ██    ██      "
+echo " ██      ██    ██ ██████  █████       ██ ██ ██  ██ ███████    ██    ███████ ██      ██      █████   ██████      ███████ ██      ██████  ██ ██████     ██      "
+echo " ██      ██    ██ ██   ██ ██          ██ ██  ██ ██      ██    ██    ██   ██ ██      ██      ██      ██   ██          ██ ██      ██   ██ ██ ██         ██      "
+echo "  ██████  ██████  ██   ██ ███████     ██ ██   ████ ███████    ██    ██   ██ ███████ ███████ ███████ ██   ██     ███████  ██████ ██   ██ ██ ██         ██      "
+
+#Generated via https://patorjk.com/software/taag/#p=display&h=0&f=ANSI%20Regular&t=Core%20Installer%20Script%0A-0.1-
+#ANSI Regular
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Updating System ==="
+sudo pacman -Syyu
+echo "=== System Updated1 ==="
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Installing yay ==="
+#Install
+sudo pacman -S git
+cd /opt
+sudo git clone https://aur.archlinux.org/yay-git.git
+sudo chown -R andreas:andreas ./yay-git
+cd yay-git
+makepkg -si
+cd
+echo "=== yay Installed ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Installing Core Programs ==="
+yay -S konsole krita kate samba kdenetwork-filesharing partitionmanager latte-dock-git spotify webapp-manager freeoffice zotero bitwarden discord vlc obs-studio tiddlydesktop proton-ge-custom-bin bottles protontricks-git protonup-git minecraft-launcher blender qbittorrent inkscape cura gimp flatpak ocs-url balena-etcher btop flameshot gnome-keyring zerotier-one clonezilla krfb stacer noisetorch
+
+yay -S whatsapp-nativefier-dark
+
+yay -S yt-dlp
+echo "=== Core Programs Installed ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Uninstalling Bloat ==="
+yay -Rns firefox
+yay -Rns legendary
+yay -Rns aisleriot
+yay -Rns ktorrent
+yay -Rns emote
+yay -Rns egps
+yay -R xdvi
+yay -R kompare
+yay -R keyboard-visualizer-git
+yay -R kde-games-meta boxtron bomber bovo dosbox frozen-bubble granatier kapman katomic kblackbox kblocks kbounce kbreakout kdiamond krdc kget kigo killbots kiriki kjumpingcube klickety kmahjongg kmines knetwalk kollision klines kreversi ksquares konquest ksirk ksnakeduel kspaceduel kajongg kgoldrunner lskat knights kfourinline mari0 kpat ksudoku knavalbattle kubrick kshisen ktuberling picmi palapeli kolf
+echo "=== Bloat Uninstalled ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Creating Soft Links ==="
+sudo ln -s /run/media/andreas/HDD/ /home/andreas/
+echo "=== Soft Link Created ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Syncing Old .config files ==="
+sudo rsync -a -P /run/media/andreas/HDD/.backups/ /home/andreas/
+echo "=== Old .config files Synced ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+echo "=== Syncing sync-backup timer and activating service ==="
+sudo rsync -a -P /run/media/andreas/HDD/.backup-timer/sync-backup.service /etc/systemd/system/sync-backup.service
+sudo rsync -a -P /run/media/andreas/HDD/.backup-timer/sync-backup.timer /etc/systemd/system/sync-backup.timer
+sudo systemctl enable sync-backup.timer
+echo "=== Sync-backup timer and service activated ==="
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
