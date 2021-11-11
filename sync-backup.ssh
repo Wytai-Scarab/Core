@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+echo "=== Syncing .backup files ==="
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+#Sync specific .config folders
+sudo rsync -P -a /home/andreas/.config /run/media/andreas/HDD/.backups/.config
+sudo rsync -P -a /home/andreas/.kde4 /run/media/andreas/HDD/.backups/.kde4
+sudo rsync -P -a /home/andreas/.local /run/media/andreas/HDD/.backups/.local
+sudo rsync -P -a /home/andreas/.minecraft /run/media/andreas/HDD/.backups/.minecraft
+sudo rsync -P -a /home/andreas/.ssh /run/media/andreas/HDD/.backups/.ssh
+sudo rsync -P -a /home/andreas/.steam /run/media/andreas/HDD/.backups/.steam
+sudo rsync -P -a /home/andreas/.vnc /run/media/andreas/HDD/.backups/.vnc
+sudo rsync -P -a /home/andreas/.wine /run/media/andreas/HDD/.backups/.wine
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+
+#Sync pacman.conf
+sudo rsync -a -P  /etc/pacman.conf /run/media/andreas/HDD/.backup-pacman/pacman.conf
+
+
+echo "--------------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------------"
+
+echo "=== .backup files Synced ==="
